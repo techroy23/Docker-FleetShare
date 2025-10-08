@@ -1,7 +1,7 @@
 services:
-  fleetshare:
+  fleetshare-1-client:
     image: techroy23/docker-fleetshare:latest
-    container_name: fleetshare1-client
+    container_name: fleetshare-1-client
     pull_policy: always
     restart: always
     privileged: true
@@ -28,4 +28,4 @@ services:
       - --revive-stopped
       - --interval
       - "60"
-      - fleetshare1-client
+      - fleetshare-1-client

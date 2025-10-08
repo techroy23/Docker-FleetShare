@@ -69,6 +69,7 @@ main() {
     log " >>> An2Kin >>> $BIN_SDK PID is $PID"
     wait $PID
     log " >>> An2Kin >>> Process exited, restarting..."
+    sleep 5
   done
 }
 
