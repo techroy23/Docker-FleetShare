@@ -7,6 +7,7 @@ FROM alpine:latest AS final
 WORKDIR /app
 
 RUN apk update \
+    && apk upgrade --no-cache \
     && apk add --no-cache ca-certificates ca-certificates-bundle unzip curl bash dos2unix iptables tzdata \
     && update-ca-certificates
 
