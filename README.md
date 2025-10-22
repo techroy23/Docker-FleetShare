@@ -1,14 +1,19 @@
-# FleetShare Docker Image
+## FleetShare Docker Image
 
 A minimal Alpine based Docker image for running the **FleetShare**.
 
-## ✨ Features
-- 🪶 Lightweight Alpine Linux base image.
-- 🔑 Configurable environment variable (`TOKEN`).
-- 🖥️ Multi‑arch support: `amd64` and `arm64`.
-- 🔄 Auto‑update support with `--pull=always`.
+## Links
+| DockerHub | GitHub | Invite |
+|----------|----------|----------|
+| [![Docker Hub](https://img.shields.io/badge/ㅤ-View%20on%20Docker%20Hub-blue?logo=docker&style=for-the-badge)](https://hub.docker.com/r/techroy23/docker-fleetshare) | [![GitHub Repo](https://img.shields.io/badge/ㅤ-View%20on%20GitHub-black?logo=github&style=for-the-badge)](https://github.com/techroy23/Docker-FleetShare) | [![Invite Link](https://img.shields.io/badge/ㅤ-Join%20FleetShare%20Now-brightgreen?logo=linktree&style=for-the-badge)](https://earn.fm/ref/LERO0EVX) |
 
-## ⚡ Usage
+## Features
+- Lightweight Alpine Linux base image.
+- Configurable environment variable (`TOKEN`).
+- Multi‑arch support: `amd64` and `arm64`.
+- Auto‑update support with `--pull=always`.
+
+## Usage
 - Access to **Fleetshare**: Ensure you have requested and been granted access to Fleetshare. You can request access <a href="https://earn.fm/en/fleetshare">**here**⁠</a>
 - Before running the container, increase socket buffer sizes (required for high‑throughput streaming).
 - To make these settings persistent across reboots, add them to /etc/sysctl.conf or a drop‑in file under /etc/sysctl.d/.
@@ -17,14 +22,14 @@ sudo sysctl -w net.core.rmem_max=8000000
 sudo sysctl -w net.core.wmem_max=8000000
 ```
 
-## 🧩 Environment variables
+## Environment variables
 | Variable | Requirement | Description |
 |----------|-------------|-------------|
 | `-e TOKEN=abcdef12-3456-7890-abcd-ef1234567890`  | Required    | EarnFM API key. Container exits if not provided. |
 | `-v ./proxy.txt:/app/proxy.txt`  | Required    | 1 proxy per line. Container exits if not provided.<br> Can be a mixed of proxies with or without auth |
 | | Required    | `username:password@ip:port`<br>`ip:port`<br>`username:password@ip:port`<br>`ip:port`<br> |
 
-## ⏱️ Run the container:
+## Run the container:
 ```bash
 docker run -d \
   --name=FleetShare \
@@ -39,5 +44,5 @@ docker run -d \
   techroy23/docker-fleetshare:latest
 ```
 
-# Invite Link
+## Invite Link
 ### https://earn.fm/ref/LERO0EVX
