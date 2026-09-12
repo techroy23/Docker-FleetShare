@@ -1,8 +1,6 @@
 #!/bin/bash
 set -Eeuo pipefail
 
-BIN_SDK_AMD64="/app/amd64/FleetShareCLI"
-BIN_SDK_ARM64="/app/arm64/FleetShareCLI"
 CONFIG_FILE="/app/config.json"
 PROXY_FILE="/app/proxy.txt"
 
@@ -18,16 +16,24 @@ if [ ! -f "$PROXY_FILE" ]; then
   exit 1
 fi
 
-detect_arch() {
+select_binary_and_arch() {
   local arch
   arch=$(uname -m)
+  local bin_suffix
+  if [ "${BETA_MODE:-0}" = "1" ]; then
+    bin_suffix="_beta"
+    log " >>> An2Kin >>> BETA_MODE=1 — using BETA binary"
+  else
+    bin_suffix="_stable"
+    log " >>> An2Kin >>> Using STABLE binary"
+  fi
   case "$arch" in
     x86_64)
-      BIN_SDK="$BIN_SDK_AMD64"
+      BIN_SDK="/app/amd64/FleetShareCLI${bin_suffix}"
       log " >>> An2Kin >>> Detected architecture: $arch, using $BIN_SDK"
       ;;
     aarch64|arm64)
-      BIN_SDK="$BIN_SDK_ARM64"
+      BIN_SDK="/app/arm64/FleetShareCLI${bin_suffix}"
       log " >>> An2Kin >>> Detected architecture: $arch, using $BIN_SDK"
       ;;
     *)
@@ -60,7 +66,7 @@ EOF
 }
 
 main() {
-  detect_arch
+  select_binary_and_arch
   generate_config
   while true; do
     log " >>> An2Kin >>> Starting binary..."
