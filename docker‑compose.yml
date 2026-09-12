@@ -7,6 +7,7 @@ services:
     privileged: true
     environment:
       - TOKEN=abcdef12-3456-7890-abcd-ef1234567890
+      # - BETA_MODE=1   # Uncomment to use the beta binary instead of stable
     volumes:
       - ./proxy.txt:/app/proxy.txt
     logging:
